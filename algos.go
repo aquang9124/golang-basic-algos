@@ -10,6 +10,9 @@ func main() {
 	fmt.Println("The factorial of 5 is:", factorial(5))
 	fmt.Println("The reverse of the string 'dlrow olleh' is:", reverseStr("dlrow olleh"))
 	fmt.Println("The total sum of all integers up to and including 10 is:", sumNums(10))
+	fmt.Println("Output of longestWord:", longestWord("Hello there my friend"))
+	fmt.Println("Output of vowelCount:", vowelCount("aeioua"))
+	fmt.Println("'racecar' is a palindrome:", palindrome("racecar"))
 }
 
 // This function will find and return the sum of all those
@@ -96,4 +99,49 @@ func sumNums(num int) int {
 		total += i
 	}
 	return total
+}
+
+// This function takes in a string and returns the
+// longest word in that string. This is assuming
+// that the string contains only letters and spaces.
+func longestWord(str string) string {
+	var longWord, currWord string
+	splitStr := strings.Split(str, " ")
+
+	for i := 0; i < len(splitStr); i++ {
+		currWord = splitStr[i]		
+		if len(currWord) > len(longWord) || longWord == "" {
+			longWord = currWord
+		} 
+	}
+	return longWord
+}
+
+// This function will take in a string and return
+// the number of vowels in that string.
+func vowelCount(str string) int {
+	arr := [5]string{"a", "e", "i", "o", "u"}
+	count := 0
+	splitStr := strings.Split(str, "")
+	for i := 0; i < len(splitStr); i++ {
+		for _, val := range arr {
+			if splitStr[i] == val {
+				count += 1
+			}
+		}
+	}
+	return count
+}
+
+// This function will take a string and return true if it is 
+// a palindrome; false if it isn't. For example: "racecar" is a
+// palindrome.
+func palindrome(str string) bool {
+	splitStr := strings.Split(str, "")
+	for i, j := 0, len(splitStr) - 1; i < j; i, j = i + 1, j - 1 {
+		if splitStr[i] != splitStr[j] {
+			return false
+		}
+	}
+	return true 
 }
