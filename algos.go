@@ -9,6 +9,7 @@ func main() {
 	fmt.Println("evenFibonacci function output:", evenFibonacci(12))
 	fmt.Println("The factorial of 5 is:", factorial(5))
 	fmt.Println("The reverse of the string 'dlrow olleh' is:", reverseStr("dlrow olleh"))
+	fmt.Println("The total sum of all integers up to and including 10 is:", sumNums(10))
 }
 
 // This function will find and return the sum of all those
@@ -84,4 +85,15 @@ func reverseStr(str string) string {
 		reversedStr = s[i] + reversedStr
 	}
 	return reversedStr
+}
+
+// This function takes an integer, 'num', as input and
+// returns the sum of all integers between zero and num,
+// up to and including num.
+func sumNums(num int) int {
+	total := 0
+	for i := 1; i <= num; i++ {
+		total += i
+	}
+	return total
 }
